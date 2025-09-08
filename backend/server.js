@@ -24,4 +24,9 @@ const server = http.createServer((req, res) => {
   res.end("OK");
 });
 
-server.listen(4000, () => console.log("Backend on http://localhost:4000"));
+// ✅ Use Render's PORT if provided, otherwise 4000 locally
+const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
+// ✅ Bind to 0.0.0.0 for Render
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`Backend running on http://0.0.0.0:${PORT}`);
+});
