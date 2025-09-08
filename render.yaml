@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: fraudshield-api
+    env: node
+    buildCommand: npm install
+    startCommand: node backend/server.js
+    envVars:
+      - key: PORT
+        value: 10000
