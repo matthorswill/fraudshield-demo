@@ -1,41 +1,41 @@
-const http = require("http");
+const express = require("express");
 const alerts = require("../data/alerts.json");
 
-const server = http.createServer((req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host}`);
-  const { pathname } = url;
+const app = express();
 
-  // CORS for debugging
+// CORS for debugging
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-
-  if (pathname === "/") {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    return res.end("OK");
-  }
-
-  if (pathname === "/api/alerts") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    return res.end(JSON.stringify(alerts));
-  }
-
-  const m = pathname.match(/^\/api\/alerts\/(\d+)\/?$/);
-  if (m) {
-    const id = Number(m[1]);
-    const alert = alerts.find(a => Number(a.id) === id);
-    if (!alert) {
-      res.writeHead(404, { "Content-Type": "application/json" });
-      return res.end(JSON.stringify({ error: "Not found", id }));
-    }
-    res.writeHead(200, { "Content-Type": "application/json" });
-    return res.end(JSON.stringify(alert));
-  }
-
-  res.writeHead(404, { "Content-Type": "application/json" });
-  res.end(JSON.stringify({ error: "Not found", path: pathname }));
+  next();
 });
 
-// Use Render’s port and bind to 0.0.0.0
+app.get("/", (req, res) => {
+  res.send("OK");
+});
+
+// Return all alerts (support trailing slash)
+app.get(["/api/alerts", "/api/alerts/"], (req, res) => {
+  res.json(alerts);
+});
+
+// Return a single alert by ID
+app.get("/api/alerts/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const alert = alerts.find((a) => Number(a.id) === id);
+  if (!alert) {
+    return res.status(404).json({ error: "Not found", id });
+  }
+  res.json(alert);
+});
+
+// Fallback for unknown routes
+app.use((req, res) => {
+  res.status(404).json({ error: "Not found", path: req.path });
+});
+
+// Use Render's port and bind to 0.0.0.0
 const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
-server.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Backend running on http://0.0.0.0:${PORT}`);
 });
+
