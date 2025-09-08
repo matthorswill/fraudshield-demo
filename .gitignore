@@ -1,0 +1,18 @@
+# dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# local environment variables
+.env
+.env.local
+
+# logs
+npm-debug.log*
+yarn-error.log*
+
+# OS / Editor junk
+.DS_Store
+.vercel/

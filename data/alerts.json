@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "type": "Fraude réseau opaque",
+    "score": 95,
+    "entity": "Société Alpha",
+    "desc": "Flux circulaires Panama, prête-noms"
+  },
+  {
+    "id": 2,
+    "type": "Adverse media",
+    "score": 87,
+    "entity": "Client X",
+    "desc": "Mention dans enquête médias internationaux"
+  },
+  {
+    "id": 3,
+    "type": "Alerte AML",
+    "score": 65,
+    "entity": "Entreprise Beta",
+    "desc": "Transactions inhabituelles, faux positif probable"
+  }
+]
