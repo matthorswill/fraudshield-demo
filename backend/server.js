@@ -1,5 +1,6 @@
 // backend/server.js
 const express = require("express");
+try { require('./lib/otel'); } catch {}
 const helmet = require("helmet");
 const compression = require("compression");
 const rateLimit = require("express-rate-limit");
@@ -9,6 +10,7 @@ const { loadAll } = require("./lib/dataLoader");
 const { buildAlerts } = require("./lib/alertsService");
 const { buildReport } = require("./lib/reportsService");
 const AI = require('./lib/aiAgent');
+const dataCtx = require('./lib/dataContext');
 let pino = null; try { pino = require('pino'); } catch {}
 const logger = pino ? pino({ level: process.env.LOG_LEVEL || 'info' }) : console;
 const { withSpan, getTraceId } = (()=>{ try { return require('./lib/tracing'); } catch { return { withSpan: async (_n,_a,fn)=>fn(), getTraceId: ()=>null }; } })();
@@ -112,6 +114,7 @@ function requireRole(...roles){
   ALERTS = await buildAlerts(DATASETS, { threshold: 75 });
   LAST_REPORT = await buildReport(DATASETS, ALERTS, require('./lib/aiAgent'));
   lastBuiltAt = new Date().toISOString();
+  try { dataCtx.setData({ datasets: DATASETS, alerts: ALERTS, lastReport: LAST_REPORT }); } catch {}
   console.log(`Loaded data. Alerts: ${ALERTS.length}`);
 })().catch(err => {
   console.error("Boot error:", err);
@@ -455,6 +458,12 @@ v1.post('/rules', express.json({ limit:'1mb' }), (req,res)=>{
 });
 
 app.use('/v1', v1);
+
+// AI router with RBAC
+try {
+  const { requireAuth, requireRole } = require('./mw/auth');
+  app.use('/v1/ai', requireAuth, requireRole('Admin','Analyst'), require('./routes/ai'));
+} catch {}
 
 // -------- Signed link sharing for reports --------
 function signShareToken(payloadObj){
