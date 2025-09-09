@@ -1,0 +1,201 @@
+customer_id,first_name,last_name,dob,country,city,address,email,phone,created_at,kyc_level,pep,sanction_hit,risk_score
+1,Bob,Moreau,1962-10-27,FR,Strasbourg,88 rue des Fleurs,bob.moreau1@example.com,+33022585320,2023-06-15,STANDARD,False,False,65
+2,Nina,Lopez,1962-11-10,FR,Nice,29 rue Victor Hugo,nina.lopez2@example.com,+33122046974,2023-12-08,STANDARD,False,False,44
+3,Paul,Bernard,1982-05-16,FR,Lille,6 boulevard Voltaire,paul.bernard3@example.com,+33868978658,2024-08-24,ENHANCED,False,False,35
+4,Bob,Lopez,1971-04-13,FR,Marseille,88 rue des Fleurs,bob.lopez4@example.com,+33861769503,2023-07-29,BASIC,False,False,48
+5,Sarah,Thomas,1987-08-12,FR,Paris,166 rue des Fleurs,sarah.thomas5@example.com,+33738722876,2025-07-28,STANDARD,False,False,27
+6,Yasmine,Roux,1958-12-17,FR,Lille,178 rue des Fleurs,yasmine.roux6@example.com,+33660191851,2025-07-31,BASIC,False,False,59
+7,Chloé,Leroy,1955-10-08,FR,Lille,70 boulevard Voltaire,chloé.leroy7@example.com,+33085650261,2023-05-19,ENHANCED,False,False,47
+8,Wassim,Garnier,1967-12-02,FR,Paris,197 rue Nationale,wassim.garnier8@example.com,+33684246528,2024-07-25,ENHANCED,False,False,47
+9,Khadija,Bertrand,1965-09-22,FR,Paris,92 boulevard Voltaire,khadija.bertrand9@example.com,+33746028588,2023-11-05,BASIC,False,False,67
+10,Rania,Robert,1985-10-28,FR,Rennes,90 rue Victor Hugo,rania.robert10@example.com,+33483354608,2024-03-16,BASIC,False,False,63
+11,Chloé,Durand,2000-04-26,FR,Lille,144 rue Nationale,chloé.durand11@example.com,+33282776049,2025-01-18,BASIC,False,False,71
+12,Paul,Simon,1990-07-06,FR,Paris,206 rue Nationale,paul.simon12@example.com,+33975910575,2024-12-24,ENHANCED,False,False,56
+13,Valentin,Leroy,1983-04-22,FR,Marseille,100 rue Victor Hugo,valentin.leroy13@example.com,+33668428651,2024-08-08,BASIC,False,False,60
+14,Jules,Petit,1978-10-24,FR,Paris,153 boulevard Voltaire,jules.petit14@example.com,+33417953747,2024-03-14,ENHANCED,False,False,22
+15,Sarah,Fournier,1985-11-12,FR,Paris,49 rue Victor Hugo,sarah.fournier15@example.com,+33067278078,2024-11-29,ENHANCED,False,False,62
+16,Emma,Simon,1988-03-04,FR,Rennes,201 rue des Fleurs,emma.simon16@example.com,+33905631442,2024-12-27,ENHANCED,False,False,43
+17,Nina,Michel,1993-02-15,FR,Marseille,198 chemin des Écoles,nina.michel17@example.com,+33834773481,2025-06-27,ENHANCED,False,False,53
+18,David,Roux,2003-11-22,FR,Lyon,165 boulevard Voltaire,david.roux18@example.com,+33671096685,2024-01-18,STANDARD,False,False,66
+19,Emma,David,1967-01-27,FR,Nantes,9 rue Victor Hugo,emma.david19@example.com,+33658003642,2025-01-23,BASIC,False,False,60
+20,Jules,Petit,1980-05-07,FR,Paris,194 rue des Fleurs,jules.petit20@example.com,+33273638668,2023-09-23,ENHANCED,False,False,60
+21,Gérald,Lefebvre,1961-11-30,FR,Lyon,120 rue des Fleurs,gérald.lefebvre21@example.com,+33890785453,2024-03-20,BASIC,False,False,58
+22,Mehdi,Bernard,1964-06-26,FR,Lyon,202 chemin des Écoles,mehdi.bernard22@example.com,+33362627202,2024-03-08,BASIC,False,False,52
+23,Zoé,Nguyen,1962-09-29,FR,Nantes,18 rue Victor Hugo,zoé.nguyen23@example.com,+33217120573,2024-09-06,BASIC,False,False,50
+24,Hugo,Dubois,1993-09-10,FR,Bordeaux,86 chemin des Écoles,hugo.dubois24@example.com,+33653008113,2024-08-26,ENHANCED,False,False,54
+25,Jules,Dubois,1966-03-23,FR,Strasbourg,70 boulevard Voltaire,jules.dubois25@example.com,+33855260945,2024-01-18,BASIC,False,False,63
+26,Khadija,Chevalier,1955-04-18,FR,Bordeaux,23 boulevard Voltaire,khadija.chevalier26@example.com,+33295719836,2023-05-14,STANDARD,False,True,40
+27,Ugo,Garnier,1961-05-02,FR,Strasbourg,142 avenue de la République,ugo.garnier27@example.com,+33604023521,2025-01-26,BASIC,False,False,38
+28,Emma,Chevalier,2009-04-01,FR,Lille,17 rue des Fleurs,emma.chevalier28@example.com,+33524619488,2025-04-29,STANDARD,False,False,57
+29,David,Garnier,2002-12-28,FR,Bordeaux,115 avenue de la République,david.garnier29@example.com,+33011917652,2025-04-09,STANDARD,False,False,83
+30,Emma,Lefebvre,1955-01-12,FR,Nantes,36 rue Victor Hugo,emma.lefebvre30@example.com,+33284626410,2024-06-11,BASIC,False,False,28
+31,David,Nguyen,2006-01-16,FR,Bordeaux,82 rue Nationale,david.nguyen31@example.com,+33850244363,2024-07-03,STANDARD,False,False,45
+32,Paul,Bernard,1992-12-03,FR,Toulouse,215 rue Victor Hugo,paul.bernard32@example.com,+33793696851,2025-06-04,BASIC,False,False,57
+33,Gérald,Thomas,1994-05-31,FR,Strasbourg,28 chemin des Écoles,gérald.thomas33@example.com,+33067965266,2025-06-28,ENHANCED,False,False,51
+34,Valentin,Garnier,1964-04-28,FR,Marseille,203 chemin des Écoles,valentin.garnier34@example.com,+33945864462,2025-05-13,BASIC,False,False,63
+35,Rania,Bertrand,2004-04-26,FR,Rennes,28 boulevard Voltaire,rania.bertrand35@example.com,+33387054754,2025-05-09,BASIC,False,False,75
+36,Rania,Lopez,2005-06-24,FR,Marseille,13 rue des Fleurs,rania.lopez36@example.com,+33091756219,2023-12-19,ENHANCED,False,False,69
+37,Chloé,Dubois,2006-06-24,FR,Strasbourg,196 avenue de la République,chloé.dubois37@example.com,+33875596457,2024-07-14,BASIC,False,False,61
+38,Farid,Dubois,1964-02-29,FR,Marseille,97 rue Victor Hugo,farid.dubois38@example.com,+33222628382,2023-07-26,ENHANCED,False,False,32
+39,Yasmine,David,1999-11-14,FR,Nice,60 rue Victor Hugo,yasmine.david39@example.com,+33676506615,2023-09-26,BASIC,False,False,77
+40,Omar,Roux,1956-04-19,FR,Lille,202 avenue de la République,omar.roux40@example.com,+33887953022,2025-04-18,BASIC,False,False,58
+41,Ugo,Roux,1973-02-25,FR,Marseille,71 rue des Fleurs,ugo.roux41@example.com,+33841530182,2023-04-28,ENHANCED,False,False,57
+42,Quentin,Martin,2008-10-28,FR,Lyon,207 avenue de la République,quentin.martin42@example.com,+33253567161,2024-03-31,ENHANCED,False,False,38
+43,Léa,Bertrand,1988-09-10,FR,Lyon,111 chemin des Écoles,léa.bertrand43@example.com,+33767060148,2025-04-28,BASIC,False,False,53
+44,Mehdi,Lefebvre,1984-10-24,FR,Lyon,9 boulevard Voltaire,mehdi.lefebvre44@example.com,+33685034542,2024-07-30,STANDARD,False,False,62
+45,Khadija,Girard,1997-04-26,FR,Toulouse,87 avenue de la République,khadija.girard45@example.com,+33783423775,2024-08-06,BASIC,False,False,38
+46,Paul,Bonnet,1995-02-04,FR,Lyon,169 boulevard Voltaire,paul.bonnet46@example.com,+33719569998,2024-04-23,STANDARD,False,False,35
+47,Emma,Dubois,1960-02-23,FR,Toulouse,201 rue des Fleurs,emma.dubois47@example.com,+33283619681,2025-02-27,ENHANCED,False,False,44
+48,Léa,Roux,1967-02-06,FR,Bordeaux,109 avenue de la République,léa.roux48@example.com,+33274939343,2025-02-19,STANDARD,False,False,44
+49,Sarah,Girard,1959-05-31,FR,Marseille,200 rue des Fleurs,sarah.girard49@example.com,+33925013053,2023-07-04,STANDARD,False,False,52
+50,Chloé,Richard,1996-06-07,FR,Paris,158 chemin des Écoles,chloé.richard50@example.com,+33316234272,2024-05-22,BASIC,False,False,57
+51,Sarah,Michel,1990-11-14,FR,Rennes,39 avenue de la République,sarah.michel51@example.com,+33347829328,2025-07-18,ENHANCED,False,False,48
+52,Farid,Dubois,1999-09-25,FR,Paris,130 chemin des Écoles,farid.dubois52@example.com,+33638396144,2023-07-10,BASIC,False,False,51
+53,Rania,Laurent,1978-11-12,FR,Lyon,107 rue Nationale,rania.laurent53@example.com,+33471275816,2024-12-12,BASIC,False,False,83
+54,Rania,Laurent,1963-08-07,FR,Lille,35 boulevard Voltaire,rania.laurent54@example.com,+33741775513,2023-06-24,STANDARD,False,False,56
+55,Léa,Chevalier,1977-10-31,FR,Nice,117 boulevard Voltaire,léa.chevalier55@example.com,+33223253728,2024-11-10,ENHANCED,False,False,41
+56,Hugo,Franco,1993-06-04,FR,Lille,216 boulevard Voltaire,hugo.franco56@example.com,+33860373932,2024-07-26,STANDARD,False,False,44
+57,Théo,Michel,1994-11-27,FR,Nice,174 rue Victor Hugo,théo.michel57@example.com,+33304242722,2023-05-08,ENHANCED,False,False,66
+58,Hugo,Bertrand,1966-03-29,FR,Nice,17 boulevard Voltaire,hugo.bertrand58@example.com,+33964521374,2025-02-14,ENHANCED,False,False,50
+59,Chloé,Michel,1970-01-25,FR,Paris,64 avenue de la République,chloé.michel59@example.com,+33763187099,2024-06-09,STANDARD,False,False,54
+60,Zoé,Michel,1966-10-11,FR,Lyon,133 rue Nationale,zoé.michel60@example.com,+33878743563,2025-01-25,BASIC,False,False,39
+61,Quentin,Girard,1974-02-27,FR,Bordeaux,74 boulevard Voltaire,quentin.girard61@example.com,+33428652321,2023-04-17,BASIC,False,False,75
+62,Léa,Bonnet,1975-11-14,FR,Paris,97 rue Nationale,léa.bonnet62@example.com,+33909651234,2024-08-02,BASIC,False,False,45
+63,Ugo,Leroy,1977-01-24,FR,Rennes,182 chemin des Écoles,ugo.leroy63@example.com,+33475895277,2024-05-14,ENHANCED,False,False,33
+64,Quentin,Thomas,1966-12-03,FR,Lille,103 chemin des Écoles,quentin.thomas64@example.com,+33733503329,2025-03-16,ENHANCED,False,False,79
+65,Emma,Moreau,1977-03-16,FR,Paris,19 chemin des Écoles,emma.moreau65@example.com,+33993230755,2024-05-22,BASIC,False,False,52
+66,Gérald,Garnier,1990-02-19,FR,Bordeaux,169 boulevard Voltaire,gérald.garnier66@example.com,+33296253589,2024-06-30,ENHANCED,False,False,56
+67,Sarah,Garnier,1958-05-10,FR,Paris,130 rue Victor Hugo,sarah.garnier67@example.com,+33906121253,2025-02-02,STANDARD,False,False,78
+68,Inès,Dubois,1972-01-09,FR,Strasbourg,58 boulevard Voltaire,inès.dubois68@example.com,+33582277993,2023-07-03,BASIC,False,False,57
+69,David,Leroy,1964-10-09,FR,Marseille,118 rue Nationale,david.leroy69@example.com,+33838233321,2024-04-25,BASIC,False,False,80
+70,Inès,Lopez,1982-06-29,FR,Lille,95 rue Victor Hugo,inès.lopez70@example.com,+33384014188,2025-05-05,BASIC,False,False,37
+71,Mehdi,Dubois,1987-12-29,FR,Paris,217 rue Victor Hugo,mehdi.dubois71@example.com,+33176388083,2024-09-02,STANDARD,False,False,51
+72,Léa,Franco,1968-09-11,FR,Rennes,151 chemin des Écoles,léa.franco72@example.com,+33441701481,2025-03-31,ENHANCED,False,False,51
+73,Inès,Leroy,1996-07-19,FR,Strasbourg,155 rue Nationale,inès.leroy73@example.com,+33488579423,2024-08-29,BASIC,False,False,69
+74,Yasmine,Dubois,1995-10-19,FR,Toulouse,117 boulevard Voltaire,yasmine.dubois74@example.com,+33364588489,2024-09-22,BASIC,False,False,15
+75,Rania,Franco,1956-09-29,FR,Marseille,174 boulevard Voltaire,rania.franco75@example.com,+33142311994,2023-07-30,ENHANCED,False,False,70
+76,Khadija,Robert,1983-05-04,FR,Rennes,194 rue Victor Hugo,khadija.robert76@example.com,+33865604347,2023-09-07,STANDARD,False,False,78
+77,Valentin,Morel,1974-04-26,FR,Bordeaux,36 rue des Fleurs,valentin.morel77@example.com,+33241653672,2024-04-30,BASIC,False,False,74
+78,Alice,Laurent,2000-03-12,FR,Nantes,46 rue des Fleurs,alice.laurent78@example.com,+33440373005,2023-11-17,BASIC,False,False,86
+79,Jules,Robert,1992-12-22,FR,Marseille,8 rue Nationale,jules.robert79@example.com,+33212288880,2023-03-31,ENHANCED,False,False,73
+80,Bob,Thomas,1976-09-23,FR,Strasbourg,134 rue des Fleurs,bob.thomas80@example.com,+33267109436,2024-04-21,STANDARD,False,False,65
+81,Théo,Bonnet,1985-10-13,FR,Marseille,130 rue Victor Hugo,théo.bonnet81@example.com,+33625978742,2023-07-11,ENHANCED,False,False,65
+82,Zoé,Petit,1975-04-02,FR,Lyon,55 rue des Fleurs,zoé.petit82@example.com,+33034760977,2023-05-12,ENHANCED,False,False,78
+83,Hugo,Durand,1989-03-24,FR,Paris,59 rue Nationale,hugo.durand83@example.com,+33832464291,2025-04-09,ENHANCED,False,False,57
+84,Alice,Laurent,2005-03-06,FR,Nantes,107 chemin des Écoles,alice.laurent84@example.com,+33959477622,2024-11-17,STANDARD,False,False,60
+85,Chloé,Leroy,1962-11-03,FR,Nantes,47 rue Nationale,chloé.leroy85@example.com,+33134594924,2024-08-04,BASIC,False,False,60
+86,Rania,Richard,2001-09-22,FR,Nantes,10 chemin des Écoles,rania.richard86@example.com,+33180514183,2024-04-09,ENHANCED,False,False,48
+87,Bob,Morel,2000-07-31,FR,Strasbourg,109 rue des Fleurs,bob.morel87@example.com,+33928339763,2023-09-06,ENHANCED,False,False,43
+88,Alice,Richard,1979-04-03,FR,Bordeaux,136 chemin des Écoles,alice.richard88@example.com,+33037255558,2024-06-11,ENHANCED,False,False,80
+89,Léa,Girard,1959-03-15,FR,Bordeaux,51 rue Nationale,léa.girard89@example.com,+33537488935,2025-04-14,ENHANCED,False,False,67
+90,Valentin,David,1986-03-15,FR,Nice,17 rue Nationale,valentin.david90@example.com,+33916828471,2023-07-19,STANDARD,False,False,92
+91,Inès,Laurent,1965-07-27,FR,Lyon,164 chemin des Écoles,inès.laurent91@example.com,+33351616072,2025-04-05,BASIC,False,False,80
+92,Quentin,Dubois,1960-05-20,FR,Paris,143 avenue de la République,quentin.dubois92@example.com,+33135083765,2025-01-04,ENHANCED,False,False,44
+93,Farid,Simon,1959-04-11,FR,Lyon,200 chemin des Écoles,farid.simon93@example.com,+33810891527,2025-03-21,STANDARD,False,False,63
+94,Quentin,Leroy,1995-09-30,FR,Paris,102 avenue de la République,quentin.leroy94@example.com,+33381490678,2025-06-16,BASIC,False,False,68
+95,Omar,David,1982-12-13,FR,Nantes,92 rue Nationale,omar.david95@example.com,+33365525106,2025-05-08,BASIC,False,False,61
+96,Xavier,Thomas,1996-11-04,FR,Nice,211 rue Nationale,xavier.thomas96@example.com,+33185026667,2024-02-26,STANDARD,False,False,75
+97,Quentin,Laurent,1982-09-04,FR,Lille,171 boulevard Voltaire,quentin.laurent97@example.com,+33145331385,2023-06-19,STANDARD,False,False,70
+98,Sarah,Chevalier,1993-04-25,FR,Lille,18 rue Victor Hugo,sarah.chevalier98@example.com,+33704168252,2023-07-31,BASIC,False,False,47
+99,Inès,Bonnet,1967-02-02,FR,Lille,135 avenue de la République,inès.bonnet99@example.com,+33996743814,2023-10-06,BASIC,False,False,47
+100,Inès,Robert,1988-09-04,FR,Paris,27 rue Victor Hugo,inès.robert100@example.com,+33397032691,2024-11-05,ENHANCED,False,False,44
+101,Zoé,Simon,1993-05-22,FR,Strasbourg,72 chemin des Écoles,zoé.simon101@example.com,+33559569748,2025-04-12,STANDARD,False,False,46
+102,Chloé,Martin,1992-12-26,FR,Nantes,43 rue des Fleurs,chloé.martin102@example.com,+33562229543,2024-10-11,BASIC,False,False,57
+103,Nina,Roux,2002-05-23,FR,Lille,195 chemin des Écoles,nina.roux103@example.com,+33830502702,2024-11-23,ENHANCED,False,False,59
+104,Ugo,Martin,1961-01-18,FR,Marseille,27 chemin des Écoles,ugo.martin104@example.com,+33388009822,2023-04-18,BASIC,False,False,54
+105,Valentin,Petit,1990-05-08,FR,Lyon,124 chemin des Écoles,valentin.petit105@example.com,+33531966559,2023-09-11,ENHANCED,False,False,51
+106,Bob,Bernard,1956-08-02,FR,Nice,71 rue Victor Hugo,bob.bernard106@example.com,+33798560553,2023-10-25,ENHANCED,False,False,53
+107,Omar,Moreau,2004-06-20,FR,Nice,5 boulevard Voltaire,omar.moreau107@example.com,+33782669597,2024-07-30,BASIC,False,False,99
+108,Rania,Michel,1985-01-15,FR,Lille,142 rue des Fleurs,rania.michel108@example.com,+33846392990,2024-07-25,ENHANCED,False,False,44
+109,Xavier,Richard,1983-08-01,FR,Lyon,79 rue des Fleurs,xavier.richard109@example.com,+33914928450,2023-04-30,BASIC,False,False,46
+110,Paul,Moreau,1960-10-10,FR,Paris,13 chemin des Écoles,paul.moreau110@example.com,+33961894229,2024-01-24,STANDARD,False,False,4
+111,Gérald,Moreau,1997-08-12,FR,Nice,163 rue Victor Hugo,gérald.moreau111@example.com,+33979353514,2025-05-17,ENHANCED,False,False,70
+112,Théo,Franco,1993-12-14,FR,Lyon,98 rue Nationale,théo.franco112@example.com,+33449435127,2024-06-17,ENHANCED,False,False,50
+113,Wassim,Petit,1981-12-22,FR,Toulouse,123 boulevard Voltaire,wassim.petit113@example.com,+33113945618,2025-03-16,BASIC,False,False,79
+114,Gérald,Lefebvre,1996-04-26,FR,Toulouse,112 chemin des Écoles,gérald.lefebvre114@example.com,+33567167432,2024-03-31,ENHANCED,False,False,63
+115,Wassim,Roux,2000-02-10,FR,Bordeaux,127 rue Nationale,wassim.roux115@example.com,+33156194000,2024-04-18,ENHANCED,False,False,30
+116,Valentin,Chevalier,1964-12-01,FR,Marseille,158 rue Nationale,valentin.chevalier116@example.com,+33037175115,2024-09-28,BASIC,False,False,65
+117,Omar,Richard,1961-10-11,FR,Paris,71 rue Victor Hugo,omar.richard117@example.com,+33351471139,2025-05-25,BASIC,False,False,55
+118,Khadija,Lopez,1990-07-01,FR,Lyon,78 rue Victor Hugo,khadija.lopez118@example.com,+33393412066,2024-04-23,ENHANCED,False,False,57
+119,Wassim,Lopez,1993-01-26,FR,Nice,50 boulevard Voltaire,wassim.lopez119@example.com,+33465506594,2023-04-16,BASIC,False,False,43
+120,Inès,Lefebvre,2000-09-21,FR,Paris,38 rue Nationale,inès.lefebvre120@example.com,+33327593754,2025-02-26,BASIC,False,False,48
+121,Paul,Moreau,1975-03-22,FR,Lyon,71 rue Nationale,paul.moreau121@example.com,+33193893092,2023-06-10,STANDARD,False,False,63
+122,Hugo,Dubois,1992-11-02,FR,Rennes,209 rue Nationale,hugo.dubois122@example.com,+33875248055,2025-05-26,ENHANCED,False,False,26
+123,Hugo,Simon,1955-01-31,FR,Bordeaux,220 rue Nationale,hugo.simon123@example.com,+33224116788,2024-06-14,STANDARD,False,False,35
+124,Xavier,Nguyen,1983-02-20,FR,Nice,158 chemin des Écoles,xavier.nguyen124@example.com,+33090396750,2025-02-22,ENHANCED,False,False,50
+125,Emma,Roux,1961-10-09,FR,Lille,108 chemin des Écoles,emma.roux125@example.com,+33362341058,2023-10-07,STANDARD,False,False,73
+126,Chloé,Bernard,1997-06-04,FR,Lyon,167 avenue de la République,chloé.bernard126@example.com,+33626492850,2024-11-24,ENHANCED,False,False,47
+127,Khadija,Chevalier,2003-04-28,FR,Nantes,205 avenue de la République,khadija.chevalier127@example.com,+33421653923,2024-10-23,BASIC,False,False,78
+128,Wassim,Lopez,2008-09-25,FR,Strasbourg,214 rue Victor Hugo,wassim.lopez128@example.com,+33950617036,2024-02-28,ENHANCED,False,False,71
+129,Xavier,Bonnet,2004-09-24,FR,Rennes,67 rue des Fleurs,xavier.bonnet129@example.com,+33429430713,2024-12-23,BASIC,False,False,61
+130,Paul,Petit,1957-06-21,FR,Marseille,146 rue Victor Hugo,paul.petit130@example.com,+33237208233,2023-11-02,STANDARD,False,False,45
+131,Emma,Fournier,1984-06-18,FR,Bordeaux,15 rue Victor Hugo,emma.fournier131@example.com,+33371940242,2024-12-13,BASIC,False,False,85
+132,Hugo,Roux,1992-10-18,FR,Nice,181 rue des Fleurs,hugo.roux132@example.com,+33961048806,2024-04-05,BASIC,False,False,35
+133,Yasmine,Richard,1975-12-26,FR,Bordeaux,91 rue Victor Hugo,yasmine.richard133@example.com,+33195713452,2024-12-03,ENHANCED,False,False,54
+134,Emma,Fournier,1965-11-05,FR,Nice,192 avenue de la République,emma.fournier134@example.com,+33680172286,2023-05-20,ENHANCED,False,False,35
+135,Paul,Nguyen,1961-01-02,FR,Strasbourg,187 rue des Fleurs,paul.nguyen135@example.com,+33138229729,2024-04-23,BASIC,False,False,70
+136,Wassim,Bertrand,1991-08-22,FR,Toulouse,108 rue Nationale,wassim.bertrand136@example.com,+33499202133,2025-01-08,BASIC,False,False,70
+137,Emma,Thomas,1961-11-21,FR,Nice,52 rue Nationale,emma.thomas137@example.com,+33600015572,2025-06-18,STANDARD,False,False,63
+138,Farid,Franco,1971-06-14,FR,Strasbourg,42 boulevard Voltaire,farid.franco138@example.com,+33655901888,2024-07-12,BASIC,False,False,65
+139,Rania,Morel,1976-05-25,FR,Paris,180 avenue de la République,rania.morel139@example.com,+33444587000,2024-07-19,STANDARD,False,False,39
+140,Sarah,Lopez,1959-06-13,FR,Lille,24 rue Nationale,sarah.lopez140@example.com,+33281255043,2023-04-08,ENHANCED,False,False,74
+141,Paul,Franco,1975-01-04,FR,Lyon,39 boulevard Voltaire,paul.franco141@example.com,+33199245186,2023-12-25,STANDARD,False,False,72
+142,Inès,Leroy,1965-12-21,FR,Marseille,41 boulevard Voltaire,inès.leroy142@example.com,+33681046676,2023-11-28,STANDARD,False,False,52
+143,Théo,Simon,1996-03-21,FR,Paris,84 avenue de la République,théo.simon143@example.com,+33067565468,2024-09-17,STANDARD,False,False,52
+144,Rania,Laurent,1955-05-21,FR,Marseille,35 rue Nationale,rania.laurent144@example.com,+33780024864,2023-12-01,BASIC,False,False,57
+145,Chloé,Martin,1976-03-25,FR,Strasbourg,202 rue Nationale,chloé.martin145@example.com,+33664881053,2023-04-28,ENHANCED,False,False,24
+146,Paul,Bernard,2000-10-11,FR,Marseille,26 boulevard Voltaire,paul.bernard146@example.com,+33512747047,2023-09-07,STANDARD,False,False,62
+147,Jules,David,2007-09-28,FR,Marseille,173 chemin des Écoles,jules.david147@example.com,+33103514633,2023-09-18,BASIC,False,False,53
+148,Mehdi,Petit,1965-07-30,FR,Nice,167 chemin des Écoles,mehdi.petit148@example.com,+33328229160,2024-05-14,STANDARD,False,False,24
+149,Yasmine,Morel,1975-12-27,FR,Bordeaux,174 avenue de la République,yasmine.morel149@example.com,+33348484028,2023-05-06,BASIC,False,False,66
+150,Rania,Garnier,1987-06-15,FR,Nice,140 rue des Fleurs,rania.garnier150@example.com,+33810954601,2024-12-23,ENHANCED,False,False,47
+151,David,Garnier,1980-04-12,FR,Paris,8 rue Victor Hugo,david.garnier151@example.com,+33714407077,2024-05-24,ENHANCED,False,False,42
+152,Ugo,Lefebvre,1989-02-06,FR,Lyon,217 boulevard Voltaire,ugo.lefebvre152@example.com,+33428553554,2025-07-26,STANDARD,False,False,61
+153,Zoé,Robert,1990-04-04,FR,Toulouse,148 rue Nationale,zoé.robert153@example.com,+33081606286,2023-05-12,ENHANCED,False,False,63
+154,Bob,David,1965-03-29,FR,Lyon,99 rue Victor Hugo,bob.david154@example.com,+33334645783,2023-08-13,ENHANCED,False,False,56
+155,Quentin,Lefebvre,1992-10-16,FR,Marseille,102 avenue de la République,quentin.lefebvre155@example.com,+33047194499,2024-06-17,STANDARD,False,False,43
+156,Alice,Bernard,1973-04-22,FR,Lille,92 avenue de la République,alice.bernard156@example.com,+33374173691,2025-04-12,ENHANCED,False,False,38
+157,Zoé,David,1970-03-19,FR,Toulouse,107 rue Nationale,zoé.david157@example.com,+33699713996,2024-11-28,BASIC,False,False,80
+158,Rania,Moreau,1999-03-26,FR,Marseille,76 boulevard Voltaire,rania.moreau158@example.com,+33522907474,2025-06-10,STANDARD,False,False,45
+159,Jules,Roux,1996-05-07,FR,Marseille,184 rue des Fleurs,jules.roux159@example.com,+33642805485,2025-07-01,BASIC,False,False,60
+160,Xavier,Robert,1959-09-18,FR,Bordeaux,130 rue Victor Hugo,xavier.robert160@example.com,+33242215452,2024-09-01,STANDARD,False,False,43
+161,Farid,Bernard,1989-12-08,FR,Bordeaux,40 avenue de la République,farid.bernard161@example.com,+33181226172,2024-06-18,STANDARD,False,False,32
+162,Wassim,Chevalier,1995-03-22,FR,Bordeaux,18 chemin des Écoles,wassim.chevalier162@example.com,+33970873444,2025-05-13,ENHANCED,False,False,32
+163,Xavier,Fournier,2005-02-01,FR,Nice,93 avenue de la République,xavier.fournier163@example.com,+33564528461,2025-01-17,STANDARD,False,False,65
+164,Omar,Laurent,1964-04-06,FR,Bordeaux,14 rue des Fleurs,omar.laurent164@example.com,+33639958128,2023-06-02,ENHANCED,False,False,49
+165,Hugo,Richard,1960-09-13,FR,Lyon,12 boulevard Voltaire,hugo.richard165@example.com,+33292516716,2025-04-11,ENHANCED,False,False,40
+166,Ugo,Thomas,1992-07-01,FR,Nice,52 boulevard Voltaire,ugo.thomas166@example.com,+33508088140,2024-10-18,ENHANCED,False,False,37
+167,Alice,Nguyen,2007-11-24,FR,Lille,160 rue Nationale,alice.nguyen167@example.com,+33709947608,2024-02-13,ENHANCED,False,False,44
+168,Omar,Chevalier,1980-06-17,FR,Strasbourg,6 boulevard Voltaire,omar.chevalier168@example.com,+33750391370,2025-01-08,ENHANCED,False,False,70
+169,Bob,Simon,1983-04-08,FR,Bordeaux,199 avenue de la République,bob.simon169@example.com,+33697132856,2024-07-25,STANDARD,False,False,58
+170,Xavier,Thomas,2008-06-20,FR,Marseille,188 rue des Fleurs,xavier.thomas170@example.com,+33682705987,2024-07-12,ENHANCED,False,False,70
+171,Omar,Martin,2009-07-10,FR,Paris,75 rue Victor Hugo,omar.martin171@example.com,+33360013518,2023-07-02,STANDARD,False,False,75
+172,Bob,David,2005-10-21,FR,Strasbourg,99 rue Victor Hugo,bob.david172@example.com,+33835998002,2023-10-13,STANDARD,False,False,65
+173,Omar,Durand,1971-05-09,FR,Marseille,77 rue Victor Hugo,omar.durand173@example.com,+33740380751,2024-01-17,BASIC,False,False,50
+174,David,Lopez,1992-08-21,FR,Bordeaux,176 rue Victor Hugo,david.lopez174@example.com,+33131584938,2025-07-31,ENHANCED,False,False,45
+175,Hugo,Durand,1973-09-11,FR,Nantes,149 rue Victor Hugo,hugo.durand175@example.com,+33098380278,2024-10-15,BASIC,False,False,52
+176,Alice,Chevalier,1988-10-22,FR,Nice,115 rue Nationale,alice.chevalier176@example.com,+33822655045,2024-12-08,STANDARD,False,False,37
+177,Inès,Petit,2005-04-24,FR,Strasbourg,6 rue Victor Hugo,inès.petit177@example.com,+33545767325,2025-04-07,STANDARD,False,False,50
+178,Farid,Roux,1964-01-01,FR,Rennes,118 avenue de la République,farid.roux178@example.com,+33641434478,2025-02-16,STANDARD,False,False,38
+179,Farid,Garnier,1960-06-07,FR,Bordeaux,172 chemin des Écoles,farid.garnier179@example.com,+33622762485,2024-01-06,STANDARD,False,False,56
+180,Xavier,Martin,1989-04-08,FR,Lyon,201 rue Nationale,xavier.martin180@example.com,+33404272025,2023-07-08,STANDARD,False,False,37
+181,Yasmine,Petit,1967-02-01,FR,Lille,161 rue Nationale,yasmine.petit181@example.com,+33789751005,2023-12-11,STANDARD,False,False,59
+182,Yasmine,Richard,1999-03-22,FR,Lyon,179 boulevard Voltaire,yasmine.richard182@example.com,+33375689067,2023-07-08,STANDARD,False,False,61
+183,Théo,Laurent,2002-07-20,FR,Bordeaux,166 rue Nationale,théo.laurent183@example.com,+33972821884,2024-09-21,ENHANCED,False,False,33
+184,Inès,Michel,2009-08-31,FR,Nice,143 rue des Fleurs,inès.michel184@example.com,+33072476197,2024-09-17,STANDARD,False,False,64
+185,Chloé,Michel,1958-12-12,FR,Strasbourg,219 avenue de la République,chloé.michel185@example.com,+33122967777,2025-01-28,ENHANCED,False,False,36
+186,Nina,David,2003-07-02,FR,Strasbourg,64 avenue de la République,nina.david186@example.com,+33357648470,2023-10-10,BASIC,False,False,72
+187,Wassim,Chevalier,1988-08-07,FR,Nantes,14 avenue de la République,wassim.chevalier187@example.com,+33950699586,2023-09-08,STANDARD,False,False,33
+188,Théo,Moreau,1974-09-10,FR,Strasbourg,8 avenue de la République,théo.moreau188@example.com,+33413206492,2023-07-03,ENHANCED,False,False,48
+189,Inès,Dubois,1964-07-26,FR,Strasbourg,147 rue des Fleurs,inès.dubois189@example.com,+33910969461,2025-03-05,STANDARD,False,False,53
+190,Bob,Robert,1962-10-10,FR,Rennes,159 boulevard Voltaire,bob.robert190@example.com,+33493241220,2025-04-22,ENHANCED,False,False,41
+191,Farid,Franco,1986-08-22,FR,Marseille,193 rue des Fleurs,farid.franco191@example.com,+33282508659,2023-03-27,BASIC,False,False,34
+192,Nina,Robert,1974-02-17,FR,Marseille,111 rue des Fleurs,nina.robert192@example.com,+33917713320,2025-04-19,ENHANCED,False,False,45
+193,Mehdi,Morel,1994-03-25,FR,Nantes,181 avenue de la République,mehdi.morel193@example.com,+33233501510,2024-12-11,STANDARD,False,False,55
+194,Nina,Michel,1971-02-17,FR,Toulouse,143 rue Nationale,nina.michel194@example.com,+33889177410,2024-12-19,STANDARD,False,False,71
+195,Léa,Moreau,1978-03-19,FR,Strasbourg,9 avenue de la République,léa.moreau195@example.com,+33569855188,2023-12-28,BASIC,False,False,55
+196,Omar,Leroy,1985-05-19,FR,Toulouse,29 rue Nationale,omar.leroy196@example.com,+33932111469,2024-02-10,ENHANCED,False,False,54
+197,Xavier,Chevalier,1993-04-29,FR,Rennes,30 avenue de la République,xavier.chevalier197@example.com,+33632568778,2025-07-22,STANDARD,False,False,62
+198,Khadija,Bertrand,1997-04-12,FR,Nantes,77 rue Nationale,khadija.bertrand198@example.com,+33554837202,2024-07-06,STANDARD,False,False,34
+199,Gérald,David,1975-08-21,FR,Nantes,173 rue Victor Hugo,gérald.david199@example.com,+33517846460,2024-02-02,ENHANCED,False,False,88
+200,Yasmine,Laurent,2009-03-15,FR,Toulouse,173 rue Nationale,yasmine.laurent200@example.com,+33557552911,2024-03-22,BASIC,False,False,99

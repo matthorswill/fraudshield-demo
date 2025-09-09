@@ -1,23 +1,60 @@
 [
   {
     "id": 1,
-    "type": "Fraude réseau opaque",
-    "score": 95,
-    "entity": "Société Alpha",
-    "desc": "Flux circulaires Panama, prête-noms"
+    "type": "Transaction Anomaly",
+    "score": 92,
+    "entity": "company:34",
+    "desc": "2927.48 GBP via PSU-PSD2 -> AE; Hits: FONDS_SEIN_PAYS_TIER, HIGH_RISK_JURISDICTION, ODD_HOUR_ACTIVITY, HIGH_RISK_ENTITY",
+    "created_at": "2025-09-02T04:17:11Z",
+    "details": {
+      "tx_id": 381,
+      "src_country": "NG",
+      "dst_country": "AE",
+      "channel": "PSU-PSD2",
+      "hits": [
+        "FONDS_SEIN_PAYS_TIER",
+        "HIGH_RISK_JURISDICTION",
+        "ODD_HOUR_ACTIVITY",
+        "HIGH_RISK_ENTITY"
+      ]
+    }
   },
   {
     "id": 2,
-    "type": "Adverse media",
-    "score": 87,
-    "entity": "Client X",
-    "desc": "Mention dans enquête médias internationaux"
+    "type": "Transaction Anomaly",
+    "score": 93,
+    "entity": "customer:29",
+    "desc": "22095.34 GBP via SWIFT -> US; Hits: KBK_HIGH_AMOUNT_NON_URGENT, FONDS_SEIN_PAYS_TIER, HIGH_RISK_ENTITY",
+    "created_at": "2025-08-12T15:10:11Z",
+    "details": {
+      "tx_id": 594,
+      "src_country": "FR",
+      "dst_country": "US",
+      "channel": "SWIFT",
+      "hits": [
+        "KBK_HIGH_AMOUNT_NON_URGENT",
+        "FONDS_SEIN_PAYS_TIER",
+        "HIGH_RISK_ENTITY"
+      ]
+    }
   },
   {
     "id": 3,
-    "type": "Alerte AML",
-    "score": 65,
-    "entity": "Entreprise Beta",
-    "desc": "Transactions inhabituelles, faux positif probable"
+    "type": "Transaction Anomaly",
+    "score": 85,
+    "entity": "company:9",
+    "desc": "4492.57 GBP via SWIFT -> IR; Hits: FONDS_SEIN_PAYS_TIER, HIGH_RISK_JURISDICTION, ODD_HOUR_ACTIVITY",
+    "created_at": "2025-08-28T02:31:11Z",
+    "details": {
+      "tx_id": 1397,
+      "src_country": "LU",
+      "dst_country": "IR",
+      "channel": "SWIFT",
+      "hits": [
+        "FONDS_SEIN_PAYS_TIER",
+        "HIGH_RISK_JURISDICTION",
+        "ODD_HOUR_ACTIVITY"
+      ]
+    }
   }
 ]
