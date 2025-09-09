@@ -11,7 +11,7 @@ services:
     name: fraudshield-web
     env: node
     buildCommand: npm ci && npm run build
-    startCommand: npm run start
+    startCommand: npm run start:web
     envVars:
       # Expose the API base URL to the Next.js app
       - key: NEXT_PUBLIC_API_BASE

@@ -25,12 +25,12 @@ export default function AlertDetail({ alert }) {
       <p style={{ marginTop: 8, color: "#444" }}>{alert.desc}</p>
 
       <div style={{ marginTop: 24, background: "#fafafa", border: "1px solid #eee", borderRadius: 8, padding: 16 }}>
-        <h3 style={{ marginTop: 0 }}>Visualization</h3>
-        <img src={imgMap[alert.id]} alt="Visualization" style={{ maxWidth: "100%", borderRadius: 6 }} />
+        <h3 style={{ marginTop: 0 }}>Visualisation</h3>
+        <img src={imgMap[alert.id]} alt="Visualisation" style={{ maxWidth: "100%", borderRadius: 6 }} />
       </div>
 
       <div style={{ marginTop: 24 }}>
-        <Link href="/" style={{ color: "#0070f3" }}>← Back to dashboard</Link>
+        <Link href="/" style={{ color: "#0070f3" }}>← Retour au tableau de bord</Link>
       </div>
     </div>
   );
@@ -47,12 +47,13 @@ function RiskBadge({ score }) {
       borderRadius: 999,
       fontWeight: 700
     }}>
-      {label}: {score}
+      {label} : {score}
     </span>
   );
 }
 function getRiskStyle(score) {
-  if (score >= 85) return { bg: "#ffe5e5", color: "#cc0000", label: "HIGH" };
-  if (score >= 70) return { bg: "#fff6e0", color: "#b36b00", label: "MEDIUM" };
-  return { bg: "#e9f8ef", color: "#1c7c3a", label: "LOW" };
+  if (score >= 85) return { bg: "#ffe5e5", color: "#cc0000", label: "ÉLEVÉ" };
+  if (score >= 70) return { bg: "#fff6e0", color: "#b36b00", label: "MOYEN" };
+  return { bg: "#e9f8ef", color: "#1c7c3a", label: "FAIBLE" };
 }
+

@@ -5,8 +5,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# Ensure public folder exists
-pub = os.path.join(os.getcwd(), "public")
+# Ensure Next.js public folder exists (frontend/public)
+pub = os.path.join(os.getcwd(), "frontend", "public")
 os.makedirs(pub, exist_ok=True)
 print(f">>> Using output folder: {pub}")
 

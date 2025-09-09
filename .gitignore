@@ -16,3 +16,7 @@ yarn-error.log*
 # OS / Editor junk
 .DS_Store
 .vercel/
+
+# local logs
+*.log
+*.err

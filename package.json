@@ -5,15 +5,18 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-  "dev": "next dev frontend -p 3000",
-  "build": "next build frontend",
-  "start": "node backend/server.js",
-  "server": "node backend/server.js"
-},
-"engines": {
-  "node": ">=18"
-},
-
+    "dev": "next dev frontend -p 3000",
+    "build": "next build frontend",
+    "start": "node backend/server.js",
+    "server": "node backend/server.js",
+    "start:web": "node scripts/start-frontend.js",
+    "start:api": "node backend/server.js",
+    "ping": "node scripts/ping-keepalive.js",
+    "ping:prod": "node scripts/ping-render.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,5 +27,3 @@
     "react-dom": "^19.1.1"
   }
 }
-
-
