@@ -1,6 +1,6 @@
-{
+﻿{
   "name": "fraudshield-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "private": true,
   "main": "index.js",
@@ -27,3 +27,4 @@
     "react-dom": "^19.1.1"
   }
 }
+
