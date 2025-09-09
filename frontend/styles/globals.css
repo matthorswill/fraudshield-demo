@@ -109,6 +109,14 @@ main.container { padding-top: 8px; padding-bottom: 32px; }
 .fs-topbar .switch { display:flex; align-items:center; gap:6px; cursor: pointer; }
 .fs-topbar .switch input { accent-color: #4F46E5; }
 
+/* Icon button for compact actions */
+.icon-btn { background: transparent; border: none; color: #e5e7eb; padding: 4px; border-radius: 8px; cursor: pointer; }
+.icon-btn:hover { background: rgba(255,255,255,0.08); }
+.icon-btn:focus-visible { outline: 2px solid rgba(79,70,229,0.6); outline-offset: 2px; }
+
+/* Dev badge when public share links enabled */
+.fs-dev-badge { font-size: 11px; color: #fecaca; background: rgba(220,38,38,0.18); border: 1px solid rgba(220,38,38,0.45); padding: 3px 6px; border-radius: 999px; }
+
 /* Page title */
 .page-title {
   color: #fff; font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: .4px; margin-bottom: 18px;

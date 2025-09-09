@@ -4,6 +4,7 @@ import { API_BASE } from '../lib/config';
 
 export default function Topbar(){
   const [q, setQ] = useState("");
+  const devShare = process.env.NEXT_PUBLIC_ALLOW_PUBLIC_SHARE_LINKS === 'true';
 
   async function onSubmit(e){
     e?.preventDefault();
@@ -25,6 +26,7 @@ export default function Topbar(){
         <button type="submit">Rechercher</button>
       </form>
       <div className="fs-topbar-actions">
+        {devShare && (<span className="fs-dev-badge" title="Partage de lien activé en DEV">DEV: share links enabled</span>)}
         <label className="switch" title="Thème">
           <input type="checkbox" onChange={()=>{ try{ document.documentElement.classList.toggle('light'); }catch{} }} />
           <span>Thème</span>

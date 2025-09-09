@@ -9,6 +9,10 @@ const { loadAll } = require("./lib/dataLoader");
 const { buildAlerts } = require("./lib/alertsService");
 const { buildReport } = require("./lib/reportsService");
 const AI = require('./lib/aiAgent');
+let pino = null; try { pino = require('pino'); } catch {}
+const logger = pino ? pino({ level: process.env.LOG_LEVEL || 'info' }) : console;
+const { withSpan, getTraceId } = (()=>{ try { return require('./lib/tracing'); } catch { return { withSpan: async (_n,_a,fn)=>fn(), getTraceId: ()=>null }; } })();
+const Cases = (()=>{ try { return require('./lib/casesService'); } catch { return null; } })();
 
 // Trust proxy for correct IPs behind Render/Proxies
 app.set('trust proxy', 1);
@@ -179,6 +183,92 @@ v1.get('/alerts', (req,res)=>{
   if (rules.length) items = items.filter(a => (Array.isArray(a.details?.hits)? a.details.hits: []).some(h => rules.includes(h)));
   const total = items.length; const start=(page-1)*pageSize; const slice = items.slice(start, start+pageSize);
   res.json({ total, page, pageSize, lastBuiltAt, items: slice });
+});
+
+// cases list
+v1.get('/cases', async (req,res)=>{
+  if (!Cases) return res.status(500).json({ error:'Cases service unavailable' });
+  await withSpan('cases.list', { filters: JSON.stringify(req.query||{}) }, async ()=>{
+    try {
+      const out = await Cases.listCases({
+        q: req.query.q || '',
+        status: Array.isArray(req.query.status) ? req.query.status : (req.query.status ? [req.query.status] : []),
+        assignee_id: req.query.assignee_id ? Number(req.query.assignee_id) : undefined,
+        risk_band: Array.isArray(req.query.risk_band) ? req.query.risk_band : (req.query.risk_band ? [req.query.risk_band] : []),
+        min_amount: req.query.min_amount ? Number(req.query.min_amount) : undefined,
+        max_amount: req.query.max_amount ? Number(req.query.max_amount) : undefined,
+        over_sla: String(req.query.over_sla||'') === 'true',
+        page: req.query.page,
+        pageSize: req.query.pageSize,
+        sortBy: req.query.sortBy,
+        sortDir: req.query.sortDir,
+      });
+      logger.info({ traceId: getTraceId(), count: out.items.length }, 'cases.list');
+      res.json(out);
+    } catch (e) { res.status(500).json({ error: e?.message || String(e) }); }
+  });
+});
+
+v1.get('/cases/metrics', async (_req,res)=>{
+  if (!Cases) return res.status(500).json({ error:'Cases service unavailable' });
+  await withSpan('cases.metrics', {}, async ()=>{
+    try { const m = await Cases.metrics({}); res.json(m); } catch (e) { res.status(500).json({ error: e?.message || String(e) }); }
+  });
+});
+
+v1.get('/cases/export.csv', async (req,res)=>{
+  if (!Cases) return res.status(500).json({ error:'Cases service unavailable' });
+  await withSpan('cases.export', { filters: JSON.stringify(req.query||{}) }, async ()=>{
+    try { const csv = await Cases.exportCsv(req.query||{}); res.setHeader('Content-Type','text/csv; charset=utf-8'); res.setHeader('Content-Disposition','attachment; filename="cases.csv"'); res.end(csv); }
+    catch (e) { res.status(500).json({ error: e?.message || String(e) }); }
+  });
+});
+
+v1.get('/cases/:id', async (req,res)=>{
+  if (!Cases) return res.status(500).json({ error:'Cases service unavailable' });
+  await withSpan('cases.get', { case_id: req.params.id }, async ()=>{
+    try { const out = await Cases.getCase(Number(req.params.id)); res.json(out); }
+    catch (e) { res.status(500).json({ error: e?.message || String(e) }); }
+  });
+});
+
+const IDEMPOTENCY = new Map();
+function checkIdempotency(req,res,next){
+  const key = req.headers['idempotency-key'];
+  if (!key) return next();
+  if (IDEMPOTENCY.has(key)) return res.json(IDEMPOTENCY.get(key));
+  const send = res.json.bind(res);
+  res.json = (body)=>{ try { IDEMPOTENCY.set(key, body); setTimeout(()=>IDEMPOTENCY.delete(key), 10*60*1000); } catch {} return send(body); };
+  next();
+}
+
+v1.patch('/cases/:id', requireAuth, requireRole('Admin','Analyst'), checkIdempotency, express.json({ limit:'1mb' }), async (req,res)=>{
+  if (!Cases) return res.status(500).json({ error:'Cases service unavailable' });
+  await withSpan('cases.patch', { case_id: req.params.id }, async ()=>{
+    try { const row = await Cases.patchCase(Number(req.params.id), req.body||{}); audit('case_patch', { id: Number(req.params.id), by: req.user?.id||null, patch: req.body||{} }); res.json({ ok:true, case: row }); }
+    catch (e) { res.status(500).json({ error: e?.message || String(e) }); }
+  });
+});
+
+v1.post('/cases/:id/escalate', requireAuth, requireRole('Admin','Analyst'), checkIdempotency, express.json({ limit:'1mb' }), async (req,res)=>{
+  await withSpan('cases.escalate', { case_id: req.params.id }, async ()=>{
+    try {
+      const approver = String(req.headers['x-approver-id']||'');
+      if (!approver || String(approver) === String(req.user?.id||'')) return res.status(400).json({ error:'four-eyes required' });
+      audit('case_escalate', { id: Number(req.params.id), by: req.user?.id||null, approver });
+      res.json({ ok:true });
+    } catch (e) { res.status(500).json({ error: e?.message || String(e) }); }
+  });
+});
+
+v1.get('/cases/:id/timeline', async (req,res)=>{
+  await withSpan('cases.timeline', { case_id: req.params.id }, async ()=>{
+    try {
+      const text = fs.readFileSync(AUDIT_LOG,'utf8');
+      const lines = text.trim().split('\n').map(l=>JSON.parse(l)).filter(e=> String(e.id||'') === String(req.params.id) && String(e.event||'').startsWith('case_'));
+      res.json({ items: lines });
+    } catch (e) { res.status(500).json({ error: e?.message || String(e) }); }
+  });
 });
 
 // alert detail

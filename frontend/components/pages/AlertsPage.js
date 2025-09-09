@@ -5,6 +5,7 @@ import KYCStatusPill from '../../components/KYCStatusPill';
 import RiskScoreBar from '../../components/RiskScoreBar';
 import { API_BASE } from '../../lib/config';
 import { useRouter } from 'next/navigation';
+import { FileDown } from 'lucide-react';
 
 export default function AlertsPage({ alerts }){
   const router = useRouter();
@@ -35,7 +36,11 @@ export default function AlertsPage({ alerts }){
                   <td>{hits.join(', ')}</td>
                   <td><KYCStatusPill expired={kyc} /></td>
                   <td>{a.created_at ? new Date(a.created_at).toLocaleString() : ''}</td>
-                  <td><button className="btn btn-sm btn-outline-secondary" onClick={(e)=>{e.stopPropagation(); openPdf(a.id);}}>PDF</button></td>
+                  <td>
+                    <button aria-label={`Télécharger PDF pour l'alerte ${a.id}`} title="Télécharger PDF" className="icon-btn" onClick={(e)=>{e.stopPropagation(); openPdf(a.id);}}>
+                      <FileDown size={18} />
+                    </button>
+                  </td>
                 </tr>
               );
             })}
@@ -45,4 +50,3 @@ export default function AlertsPage({ alerts }){
     </>
   );
 }
-
