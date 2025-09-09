@@ -1,8 +1,5 @@
-import dynamic from 'next/dynamic';
-
 export const dynamic = 'force-dynamic';
-
-const Board = dynamic(() => import('../../components/kanban/Board'), { ssr: false });
+import Board from '../../components/kanban/Board';
 
 export default function Page(){
   return (
@@ -12,4 +9,3 @@ export default function Page(){
     </>
   );
 }
-

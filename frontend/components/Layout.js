@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar.tsx';
 import Topbar from './Topbar';
 
 export default function Layout({ children }) {

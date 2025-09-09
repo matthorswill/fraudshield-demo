@@ -97,7 +97,7 @@ body {
 .fs-brand { display:flex; align-items:center; gap:10px; color: var(--text-100); font-weight:800; font-size: 18px; text-decoration:none; }
 .fs-nav a { display:block; color: var(--text-300); padding: 8px 10px; border-radius:8px; text-decoration:none; }
 .fs-nav a:hover, .fs-nav a.active { background: var(--bg-700); color: var(--text-100); }
-.fs-main { flex:1; padding: 24px; }
+.fs-main { flex:1; padding: 24px; margin-left: 72px; }
 main.container { padding-top: 8px; padding-bottom: 32px; }
 
 /* Topbar */
