@@ -1,0 +1,6 @@
+﻿tx_id,timestamp,amount,currency,channel,src_type,src_id,dst_type,dst_id,src_country,dst_country,ip_country,crypto_institution_registered,kyc_age_days,label,rule_hits,anomaly_score
+9001,2025-08-01T01:10:00Z,20000,EUR,SEPA,Customer,1,Company,1,FR,CN,FR,true,600,suspicious,,92
+9002,2025-08-03T13:45:00Z,1200,EUR,PSU-PSD2,Company,1,Customer,2,FR,FR,US,false,800,suspicious,,70
+9003,2025-08-05T02:30:00Z,3000,EUR,SEPA,Customer,2,Company,2,FR,RU,FR,false,590,suspicious,,80
+9004,2025-08-05T03:20:00Z,10000,EUR,SEPA,Customer,2,Company,2,FR,FR,FR,false,590,suspicious,,65
+9005,2025-08-06T10:20:00Z,9500,EUR,CASH,Customer,1,Company,2,FR,FR,FR,false,600,normal,,30

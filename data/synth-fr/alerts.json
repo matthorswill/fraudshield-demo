@@ -1,0 +1,4 @@
+﻿[
+  {"id": 9001, "type": "SEPA", "entity": "Client FR #1", "score": 88, "desc": "Règles: KBK_HIGH_AMOUNT_NON_URGENT, FONDS_SEIN_PAYS_TIER", "hits": ["KBK_HIGH_AMOUNT_NON_URGENT","FONDS_SEIN_PAYS_TIER"]},
+  {"id": 9002, "type": "PSU-PSD2", "entity": "Entreprise FR #A", "score": 76, "desc": "Règles: UTILISATION_CONNECTE, KYC_OBSOLE", "hits": ["UTILISATION_CONNECTE","KYC_OBSOLE"]}
+]

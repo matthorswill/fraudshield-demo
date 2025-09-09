@@ -1,0 +1,3 @@
+﻿company_id,name,country,created_at,kyc_updated_at,risk_score
+1,Entreprise FR #A,FR,2020-03-05,2022-01-01,55
+2,Entreprise EU #B,DE,2023-04-22,2024-05-01,30

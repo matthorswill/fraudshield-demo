@@ -1,0 +1,3 @@
+﻿customer_id,name,country,created_at,kyc_updated_at,risk_score
+1,Client FR #1,FR,2022-01-10,2023-02-15,40
+2,Client FR #2,FR,2021-06-01,2022-01-01,85
