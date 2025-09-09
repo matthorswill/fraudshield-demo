@@ -5,9 +5,15 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "next dev frontend -p 3000",
-    "server": "node backend/server.js"
-  },
+  "dev": "next dev frontend -p 3000",
+  "build": "next build frontend",
+  "start": "node backend/server.js",
+  "server": "node backend/server.js"
+},
+"engines": {
+  "node": ">=18"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",

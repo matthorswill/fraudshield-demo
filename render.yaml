@@ -1,9 +1,21 @@
 services:
+  # Backend API service (Express)
   - type: web
     name: fraudshield-api
     env: node
-    buildCommand: npm install
+    buildCommand: npm ci
     startCommand: node backend/server.js
+
+  # Frontend Next.js service (SSR)
+  - type: web
+    name: fraudshield-web
+    env: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
     envVars:
-      - key: PORT
-        value: 10000
+      # Expose the API base URL to the Next.js app
+      - key: NEXT_PUBLIC_API_BASE
+        fromService:
+          name: fraudshield-api
+          type: web
+          property: url
