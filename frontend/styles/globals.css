@@ -189,3 +189,17 @@ main.container { padding-top: 8px; padding-bottom: 32px; }
 @media (max-width: 991px) {
   .risk-cards { grid-template-columns: 1fr; }
 }
+
+/* Bank-grade theme tokens */
+@layer base {
+  :root{
+    --bg:#0B1E3A;
+    --surface:#0F294E;
+    --text:#F8FAFC;
+    --muted:#CBD5E1;
+    --primary:#F2C464;
+  }
+  body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+}
+
+.header-gradient{ background: linear-gradient(180deg,#0B1E3A 0%,#082446 100%); }
