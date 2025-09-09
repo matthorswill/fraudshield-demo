@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    image: fraudshield-api:local
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - FRONTEND_ORIGIN=http://localhost:3000
+      # ADMIN_API_KEY=change-me
+    ports:
+      - "4000:4000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:4000/_status"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    image: fraudshield-web:local
+    depends_on:
+      - api
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_PUBLIC_API_BASE=http://api:4000
+    ports:
+      - "3000:3000"
+
+  # Optional keep-alive pinger
+  # pinger:
+  #   image: node:18-alpine
+  #   depends_on:
+  #     - api
+  #   working_dir: /app
+  #   volumes:
+  #     - .:/app
+  #   command: ["node", "scripts/ping-keepalive.js"]
+  #   environment:
+  #     - KEEPALIVE_URL=http://api:4000
+

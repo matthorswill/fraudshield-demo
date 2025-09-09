@@ -70,6 +70,8 @@ async function buildAlerts(datasets, { threshold = 75 } = {}) {
         src_country: t.src_country,
         dst_country: t.dst_country,
         channel: t.channel,
+        amount: t.amount,
+        currency: t.currency,
         hits,
         previously_flagged_count: prev
       }

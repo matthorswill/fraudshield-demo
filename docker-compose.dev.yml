@@ -1,0 +1,48 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fraudshield
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - FRONTEND_ORIGIN=http://localhost:3000
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/fraudshield
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "4000:4000"
+
+  web:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_PUBLIC_API_BASE=http://localhost:4000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+

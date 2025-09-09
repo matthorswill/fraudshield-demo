@@ -1,38 +1,51 @@
-﻿{
-    "name":  "fraudshield-demo",
-    "version":  "1.0.1",
-    "description":  "",
-    "private":  true,
-    "main":  "index.js",
-    "scripts":  {
-                    "dev":  "next dev frontend -p 3000",
-                    "build":  "next build frontend",
-                    "start":  "node backend/server.js",
-                    "server":  "node backend/server.js",
-                    "start:web":  "node scripts/start-frontend.js",
-                    "start:api":  "node backend/server.js",
-                    "ping":  "node scripts/ping-keepalive.js",
-                    "ping:prod":  "node scripts/ping-render.js"
-                },
-    "engines":  {
-                    "node":  "\u003e=18"
-                },
-    "keywords":  [
-
-                 ],
-    "author":  "",
-    "license":  "ISC",
-    "dependencies":  {
-                         "bootstrap":  "^5.3.3",
-                         "chart.js":  "^4.4.1",
-                         "csv-parse":  "^6.1.0",
-                         "express":  "^5.1.0",
-                         "next":  "^15.5.2",
-                         "openai":  "^5.20.0",
-                         "react":  "^19.1.1",
-                         "react-dom":  "^19.1.1",
-                         "helmet":  " ^7.1.0 ",
-                         "express-rate-limit":  " ^7.4.0 ",
-                         "compression":  " ^1.7.4 "
-                     }
+{
+    "name": "fraudshield-demo",
+    "version": "1.0.1",
+    "description": "",
+    "private": true,
+    "main": "index.js",
+  "scripts": {
+        "dev": "next dev frontend -p 3000",
+        "build": "next build frontend",
+        "start": "node backend/server.js",
+        "server": "node backend/server.js",
+        "db:migrate": "node -e \"require('fs').readFileSync('backend/db/sql/001_schema.sql','utf8')\"",
+        "seed": "node backend/db/seed.js",
+        "dev:ps": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/dev.ps1",
+        "start:web": "node scripts/start-frontend.js",
+        "start:api": "node backend/server.js",
+        "ping": "node scripts/ping-keepalive.js",
+        "ping:prod": "node scripts/ping-render.js"
+  },
+    "engines": {
+        "node": ">=18"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@radix-ui/react-tooltip": "^1.2.8",
+        "autoprefixer": "^10.4.20",
+        "bootstrap": "^5.3.3",
+        "chart.js": "^4.4.1",
+        "compression": " ^1.7.4 ",
+        "csv-parse": "^6.1.0",
+        "express": "^5.1.0",
+        "express-rate-limit": " ^7.4.0 ",
+        "framer-motion": "^11.18.2",
+        "helmet": " ^7.1.0 ",
+        "html2canvas": "^1.4.1",
+        "jspdf": "^2.5.1",
+        "pdfkit": "^0.15.0",
+        "lucide-react": "^0.441.0",
+        "next": "^15.5.2",
+        "openai": "^5.20.0",
+        "postcss": "^8.4.31",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1",
+        "tailwindcss": "^3.4.10",
+        "xlsx": "^0.18.5",
+        "pg": "^8.12.0",
+        "jsonwebtoken": "^9.0.2"
+  }
 }

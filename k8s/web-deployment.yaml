@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fraudshield-web
+  namespace: fraudshield
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fraudshield-web
+  template:
+    metadata:
+      labels:
+        app: fraudshield-web
+    spec:
+      containers:
+        - name: web
+          image: your-registry/fraudshield-web:1.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3000"
+            - name: NEXT_PUBLIC_API_BASE
+              value: http://fraudshield-api:4000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 20
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fraudshield-web
+  namespace: fraudshield
+spec:
+  selector:
+    app: fraudshield-web
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+

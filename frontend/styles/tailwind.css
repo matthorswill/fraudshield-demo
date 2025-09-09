@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens for reference */
+:root{
+  --bg:#0B0F14;
+  --muted:#94A3B8;
+  --primary:#4F46E5;
+  --hover:rgba(79,70,229,0.12);
+}
+
