@@ -13,3 +13,17 @@ export async function apiSend(path, { method='POST', json, headers }={}){
   return res.json();
 }
 
+// Convenience helper used by SSR dashboard
+export async function getAlerts(params = {}){
+  const qs = new URLSearchParams();
+  const { q, minScore, rule, page, pageSize } = params || {};
+  if (q) qs.set('q', String(q));
+  if (minScore) qs.set('minScore', String(minScore));
+  if (page) qs.set('page', String(page));
+  if (pageSize) qs.set('pageSize', String(pageSize));
+  if (Array.isArray(rule)) for (const r of rule) qs.append('rule', r);
+  else if (rule) qs.append('rule', String(rule));
+  const res = await fetch(`${API_BASE}/api/alerts?${qs.toString()}`);
+  if (!res.ok) throw new Error(`API ${res.status}`);
+  return res.json();
+}
