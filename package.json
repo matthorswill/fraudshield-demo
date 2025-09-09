@@ -1,33 +1,38 @@
-{
-    "name": "fraudshield-demo",
-    "version": "1.0.1",
-    "description": "",
-    "private": true,
-    "main": "index.js",
-    "scripts": {
-        "dev": "next dev frontend -p 3000",
-        "build": "next build frontend",
-        "start": "node backend/server.js",
-        "server": "node backend/server.js",
-        "start:web": "node scripts/start-frontend.js",
-        "start:api": "node backend/server.js",
-        "ping": "node scripts/ping-keepalive.js",
-        "ping:prod": "node scripts/ping-render.js"
-    },
-    "engines": {
-        "node": ">=18"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "bootstrap": "^5.3.3",
-        "chart.js": "^4.4.1",
-        "csv-parse": "^6.1.0",
-        "express": "^5.1.0",
-        "next": "^15.5.2",
-        "openai": "^5.20.0",
-        "react": "^19.1.1",
-        "react-dom": "^19.1.1"
-    }
+﻿{
+    "name":  "fraudshield-demo",
+    "version":  "1.0.1",
+    "description":  "",
+    "private":  true,
+    "main":  "index.js",
+    "scripts":  {
+                    "dev":  "next dev frontend -p 3000",
+                    "build":  "next build frontend",
+                    "start":  "node backend/server.js",
+                    "server":  "node backend/server.js",
+                    "start:web":  "node scripts/start-frontend.js",
+                    "start:api":  "node backend/server.js",
+                    "ping":  "node scripts/ping-keepalive.js",
+                    "ping:prod":  "node scripts/ping-render.js"
+                },
+    "engines":  {
+                    "node":  "\u003e=18"
+                },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "ISC",
+    "dependencies":  {
+                         "bootstrap":  "^5.3.3",
+                         "chart.js":  "^4.4.1",
+                         "csv-parse":  "^6.1.0",
+                         "express":  "^5.1.0",
+                         "next":  "^15.5.2",
+                         "openai":  "^5.20.0",
+                         "react":  "^19.1.1",
+                         "react-dom":  "^19.1.1",
+                         "helmet":  " ^7.1.0 ",
+                         "express-rate-limit":  " ^7.4.0 ",
+                         "compression":  " ^1.7.4 "
+                     }
 }

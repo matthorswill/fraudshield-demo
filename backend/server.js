@@ -1,20 +1,51 @@
 // backend/server.js
 const express = require("express");
+const helmet = require("helmet");
+const compression = require("compression");
+const rateLimit = require("express-rate-limit");
 const app = express();
 
 const { loadAll } = require("./lib/dataLoader");
 const { buildAlerts } = require("./lib/alertsService");
 
-// CORS simple (démo)
+// Trust proxy for correct IPs behind Render/Proxies
+app.set('trust proxy', 1);
+
+// Security headers
+app.use(helmet({
+  referrerPolicy: { policy: "no-referrer" },
+  crossOriginResourcePolicy: { policy: "cross-origin" },
+}));
+app.disable('x-powered-by');
+
+// Basic compression
+app.use(compression());
+
+// Global rate limiting (per IP)
+const limiter = rateLimit({
+  windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS || 15 * 60 * 1000),
+  max: Number(process.env.RATE_LIMIT_MAX || 600),
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use(limiter);
+
+// CORS restricted to configured frontend origin or localhost
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  if (req.method === "OPTIONS") return res.sendStatus(204);
+  const origin = req.headers.origin;
+  const allowed = process.env.FRONTEND_ORIGIN || 'http://localhost:3000';
+  if (!origin || origin === allowed) {
+    res.setHeader('Access-Control-Allow-Origin', allowed);
+  }
+  res.setHeader('Vary', 'Origin');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-API-Key');
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
 
 app.get("/", (_req, res) => res.send("OK"));
+app.get("/_status", (_req, res) => res.json({ ok: true, time: new Date().toISOString() }));
 
 let DATASETS = null;
 let ALERTS = [];
@@ -34,9 +65,12 @@ let lastBuiltAt = null;
 // Liste avec recherche / filtres / pagination
 app.get("/api/alerts", (req, res) => {
   const q = (req.query.q || '').toString().toLowerCase();
-  const minScore = Number(req.query.minScore || 0);
-  const page = Math.max(1, parseInt(req.query.page || '1', 10));
-  const pageSize = Math.min(100, Math.max(1, parseInt(req.query.pageSize || '50', 10)));
+  const minScoreRaw = Number(req.query.minScore || 0);
+  const minScore = Number.isFinite(minScoreRaw) ? Math.max(0, Math.min(100, minScoreRaw)) : 0;
+  const pageRaw = parseInt(req.query.page || '1', 10);
+  const page = Number.isFinite(pageRaw) ? Math.max(1, pageRaw) : 1;
+  const pageSizeRaw = parseInt(req.query.pageSize || '50', 10);
+  const pageSize = Number.isFinite(pageSizeRaw) ? Math.min(100, Math.max(1, pageSizeRaw)) : 50;
 
   // normalize rule filters: support repeated ?rule=... or comma-separated
   let rules = req.query.rule;
@@ -105,16 +139,32 @@ app.get("/api/transactions", (req, res) => {
   }
 });
 
-// Recalcul (simple token si besoin)
-app.get("/api/recompute", async (req, res) => {
+// Simple API-key middleware for admin endpoints
+function requireApiKey(req, res, next) {
+  const key = req.header('X-API-Key');
+  if (!process.env.ADMIN_API_KEY || key === process.env.ADMIN_API_KEY) return next();
+  return res.status(401).json({ error: 'Unauthorized' });
+}
+
+// Recalcul (protégé par clé d'API)
+app.get("/api/recompute", requireApiKey, async (req, res) => {
   try {
+    const thrRaw = Number(req.query.threshold || 75);
+    const threshold = Number.isFinite(thrRaw) ? Math.max(0, Math.min(100, thrRaw)) : 75;
     DATASETS = loadAll();
-    ALERTS = await buildAlerts(DATASETS, { threshold: Number(req.query.threshold || 75) });
+    ALERTS = await buildAlerts(DATASETS, { threshold });
     lastBuiltAt = new Date().toISOString();
     res.json({ ok: true, lastBuiltAt, count: ALERTS.length });
   } catch (e) {
     res.status(500).json({ ok: false, error: e?.message || String(e) });
   }
+});
+
+// Centralized error handler (no stack trace leak)
+// eslint-disable-next-line no-unused-vars
+app.use((err, _req, res, _next) => {
+  try { console.error('ERR', new Date().toISOString(), err?.message || err); } catch {}
+  res.status(500).json({ error: 'Internal Server Error' });
 });
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;

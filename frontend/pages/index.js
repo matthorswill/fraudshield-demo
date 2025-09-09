@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Layout from "../components/Layout";
 import { API_BASE } from "../lib/config";
 import { useMemo, useState } from "react";
@@ -10,6 +10,10 @@ export async function getServerSideProps({ query }) {
     page: query.page || "1",
     pageSize: query.pageSize || "100",
   });
+  const rules = Array.isArray(query.rule)
+    ? query.rule.flatMap(r => String(r).split(',')).map(s=>s.trim()).filter(Boolean)
+    : (query.rule ? String(query.rule).split(',').map(s=>s.trim()).filter(Boolean) : []);
+  for (const r of rules) qs.append('rule', r);
   const res = await fetch(`${API_BASE}/api/alerts?` + qs.toString());
   const data = await res.json();
   return { props: { data, queryInit: query } };
@@ -24,18 +28,31 @@ function RiskBadge({ score }) {
 export default function Home({ data, queryInit }) {
   const [q, setQ] = useState(queryInit.q || "");
   const [minScore, setMinScore] = useState(queryInit.minScore || "");
-  const [fKyc, setFKyc] = useState(false);
-  const [fVir, setFVir] = useState(false);
-  const [fPays, setFPays] = useState(false);
+  const initRules = Array.isArray(queryInit.rule)
+    ? queryInit.rule.flatMap(r => String(r).split(',')).map(s=>s.trim())
+    : (queryInit.rule ? String(queryInit.rule).split(',').map(s=>s.trim()) : []);
+  const kycChecked = initRules.includes('KYC_OBSOLE');
+  const virChecked = initRules.includes('VIREMENT_IRREGULIER');
+  const paysChecked = initRules.includes('FONDS_SEIN_PAYS_TIER');
 
-  const items = useMemo(() => {
-    let arr = data.items || [];
-    const has = (a, code) => Array.isArray(a.details?.hits) && a.details.hits.includes(code);
-    if (fKyc) arr = arr.filter(a => has(a, 'KYC_OBSOLE'));
-    if (fVir) arr = arr.filter(a => has(a, 'VIREMENT_IRREGULIER'));
-    if (fPays) arr = arr.filter(a => has(a, 'FONDS_SEIN_PAYS_TIER'));
-    return arr;
-  }, [data, fKyc, fVir, fPays]);
+  const currentPage = Number(queryInit.page || '1');
+  const pageSize = Number(queryInit.pageSize || '100');
+  const totalPages = Math.max(1, Math.ceil((data.total || 0) / (pageSize || 1)));
+
+  const baseQuery = useMemo(() => {
+    const qs = new URLSearchParams();
+    if (q) qs.set('q', q);
+    if (minScore) qs.set('minScore', String(minScore));
+    qs.set('pageSize', String(pageSize));
+    for (const r of initRules) if (r) qs.append('rule', r);
+    return qs;
+  }, [q, minScore, pageSize, initRules]);
+
+  const pageHref = (p) => {
+    const qs = new URLSearchParams(baseQuery);
+    qs.set('page', String(p));
+    return `/?${qs.toString()}`;
+  };
 
   return (
     <Layout>
@@ -54,24 +71,29 @@ export default function Home({ data, queryInit }) {
           <input name="minScore" value={minScore} onChange={e=>setMinScore(e.target.value)} placeholder="Score min" className="form-control" />
         </div>
         <div className="col-auto">
+          <select name="pageSize" defaultValue={String(pageSize)} className="form-select">
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <div className="col-12"></div>
+        <div className="col-auto form-check ms-2">
+          <input className="form-check-input" type="checkbox" id="rKyc" name="rule" value="KYC_OBSOLE" defaultChecked={kycChecked} />
+          <label className="form-check-label" htmlFor="rKyc">KYC outdated</label>
+        </div>
+        <div className="col-auto form-check">
+          <input className="form-check-input" type="checkbox" id="rVir" name="rule" value="VIREMENT_IRREGULIER" defaultChecked={virChecked} />
+          <label className="form-check-label" htmlFor="rVir">Virements irréguliers</label>
+        </div>
+        <div className="col-auto form-check">
+          <input className="form-check-input" type="checkbox" id="rPays" name="rule" value="FONDS_SEIN_PAYS_TIER" defaultChecked={paysChecked} />
+          <label className="form-check-label" htmlFor="rPays">Pays tiers</label>
+        </div>
+        <div className="col-auto">
           <button type="submit" className="btn btn-primary">Filtrer</button>
         </div>
       </form>
-
-      <div className="d-flex gap-3 mb-2">
-        <div className="form-check">
-          <input className="form-check-input" type="checkbox" id="fKyc" checked={fKyc} onChange={e=>setFKyc(e.target.checked)} />
-          <label className="form-check-label" htmlFor="fKyc">KYC outdated</label>
-        </div>
-        <div className="form-check">
-          <input className="form-check-input" type="checkbox" id="fVir" checked={fVir} onChange={e=>setFVir(e.target.checked)} />
-          <label className="form-check-label" htmlFor="fVir">Virements irréguliers</label>
-        </div>
-        <div className="form-check">
-          <input className="form-check-input" type="checkbox" id="fPays" checked={fPays} onChange={e=>setFPays(e.target.checked)} />
-          <label className="form-check-label" htmlFor="fPays">Pays tiers</label>
-        </div>
-      </div>
 
       <div className="table-responsive">
         <table className="table table-sm table-striped align-middle">
@@ -81,11 +103,11 @@ export default function Home({ data, queryInit }) {
             </tr>
           </thead>
           <tbody>
-            {items.map(a=> (
+            {(data.items || []).map(a=> (
               <tr key={a.id}>
                 <td>{a.id}</td>
                 <td><RiskBadge score={a.score} /></td>
-                <td>{a.entity}</td>
+                <td>{a.entity_name || a.entity}</td>
                 <td><Link href={`/alert/${a.id}`}>{a.desc}</Link></td>
                 <td>{a.created_at ? new Date(a.created_at).toLocaleString() : ''}</td>
                 <td>{Array.isArray(a.details?.hits) && a.details.hits.includes('KYC_OBSOLE') ? 'Oui' : ''}</td>
@@ -96,8 +118,21 @@ export default function Home({ data, queryInit }) {
       </div>
 
       <div className="text-muted small mt-2">
-        {data.total} alertes • Rebuild: {data.lastBuiltAt}
+        {data.total} alertes â€¢ page {currentPage} / {totalPages} â€¢ Rebuild: {data.lastBuiltAt}
       </div>
+
+      <nav className="mt-2">
+        <ul className="pagination pagination-sm">
+          <li className={`page-item ${currentPage <= 1 ? 'disabled' : ''}`}>
+            <Link className="page-link" href={currentPage <= 1 ? '#' : pageHref(currentPage - 1)}>Précédent</Link>
+          </li>
+          <li className="page-item disabled"><span className="page-link">{currentPage}</span></li>
+          <li className={`page-item ${currentPage >= totalPages ? 'disabled' : ''}`}>
+            <Link className="page-link" href={currentPage >= totalPages ? '#' : pageHref(currentPage + 1)}>Suivant</Link>
+          </li>
+        </ul>
+      </nav>
     </Layout>
   );
 }
+
